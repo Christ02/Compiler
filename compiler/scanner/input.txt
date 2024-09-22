@@ -1,0 +1,27 @@
+/*hola*/
+
+class Program {
+    boolean entrada;
+    int numeros;
+
+    int suma(int valor1, int valor2){
+        int res;
+        res = valor1 + valor2;
+        return res;
+    }
+    void main(){
+        int resultado1, resultado2;
+        boolean resultado3;
+        entrada = true;
+
+        if (entrada == true){
+            resultado1 = suma(3,2);
+        }
+        entrada = false;
+        if (entrada == true){
+            resultado1 = resta(3,2);
+        }
+        
+    }
+}
+
