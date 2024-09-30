@@ -1,0 +1,66 @@
+// parser.cup
+package parser;
+
+import java_cup.runtime.Symbol;
+import parser.Program;
+import parser.StmtList;
+import parser.Stmt;
+import parser.Type;
+import parser.Expr;
+
+// Importar la clase de símbolos (tokens)
+import scanner.Scanner;
+
+// Definir terminales (tokens)
+terminal String IDENTIFIER, STRINGLIT;
+terminal int INTLIT;
+terminal float FLOATLIT;
+terminal IF, ELSE, WHILE, FOR, INT, FLOAT, BOOLEAN, TRUE, FALSE, PUBLIC, VOID, RETURN;
+terminal EQUALS, EQUALS_EQUALS, NOT_EQUALS, LESS_THAN, LESS_THAN_EQUALS, GREATER_THAN, GREATER_THAN_EQUALS;
+terminal LPAREN, RPAREN, LBRACE, RBRACE, SEMICOLON, COMMA, PLUS, MINUS, MULTIPLY, DIVIDE;
+
+// Definir no terminales
+non terminal Program program;
+non terminal StmtList stmtList;
+non terminal Stmt stmt;
+non terminal Expr expr;
+non terminal Type type;
+
+// Definir precedencias para el IF/ELSE
+precedence left ELSE;
+precedence left EQUALS_EQUALS, NOT_EQUALS;
+precedence left LESS_THAN, GREATER_THAN, LESS_THAN_EQUALS, GREATER_THAN_EQUALS;
+precedence left PLUS, MINUS;
+precedence left MULTIPLY, DIVIDE;
+
+// Definir la producción principal
+program ::= stmtList:sl {: System.out.println("Programa válido"); RESULT = sl; :};
+
+// Lista de sentencias
+stmtList ::= stmtList:sl stmt:s {: RESULT = sl; System.out.println("Sentencia agregada"); :}
+          | stmt:s               {: RESULT = s; :};
+
+// Definir las producciones para las sentencias
+stmt ::= type:t IDENTIFIER:id EQUALS expr:e SEMICOLON {: System.out.println("Declaración de variable: " + id); :}
+       | IF LPAREN expr:e RPAREN stmt:s {: System.out.println("Condicional if"); :}
+       | IF LPAREN expr:e RPAREN stmt:s ELSE stmt:es {: System.out.println("Condicional if-else"); :}
+       | WHILE LPAREN expr:e RPAREN stmt:s {: System.out.println("Bucle while"); :}
+       | FOR LPAREN stmt:s expr:e SEMICOLON stmt:s RPAREN stmt:s {: System.out.println("Bucle for"); :}
+       | RETURN expr:e SEMICOLON {: System.out.println("Instrucción return"); :}
+       | LBRACE stmtList:sl RBRACE {: RESULT = sl; :};  // Bloque de código
+
+// Definir las producciones para expresiones
+expr ::= expr:e1 PLUS expr:e2 {: System.out.println("Suma"); :}
+       | expr:e1 MINUS expr:e2 {: System.out.println("Resta"); :}
+       | expr:e1 MULTIPLY expr:e2 {: System.out.println("Multiplicación"); :}
+       | expr:e1 DIVIDE expr:e2 {: System.out.println("División"); :}
+       | INTLIT:i {: System.out.println("Literal entero: " + i); :}
+       | FLOATLIT:f {: System.out.println("Literal flotante: " + f); :}
+       | IDENTIFIER:id {: System.out.println("Identificador: " + id); :}
+       | TRUE {: System.out.println("Literal booleano: true"); :}
+       | FALSE {: System.out.println("Literal booleano: false"); :};
+
+// Definir las producciones para los tipos de datos
+type ::= INT    {: RESULT = "int"; :}
+      | FLOAT  {: RESULT = "float"; :}
+      | BOOLEAN {: RESULT = "boolean"; :};

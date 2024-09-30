@@ -1,90 +1,89 @@
-Token: COMMENT
-Token: IDENTIFIER
-Token: IDENTIFIER
-Token: LBRACE
-Token: BOOLEAN
-Token: IDENTIFIER
-Token: SEMICOLON
-Token: INT
-Token: IDENTIFIER
-Token: SEMICOLON
-Token: INT
-Token: IDENTIFIER
-Token: LPAREN
-Token: INT
-Token: IDENTIFIER
-Token: COMMA
-Token: INT
-Token: IDENTIFIER
-Token: RPAREN
-Token: LBRACE
-Token: INT
-Token: IDENTIFIER
-Token: SEMICOLON
-Token: IDENTIFIER
-Token: EQUALS
-Token: IDENTIFIER
-Token: PLUS
-Token: IDENTIFIER
-Token: SEMICOLON
-Token: RETURN
-Token: IDENTIFIER
-Token: SEMICOLON
-Token: RBRACE
-Token: VOID
-Token: IDENTIFIER
-Token: LPAREN
-Token: RPAREN
-Token: LBRACE
-Token: INT
-Token: IDENTIFIER
-Token: COMMA
-Token: IDENTIFIER
-Token: SEMICOLON
-Token: BOOLEAN
-Token: IDENTIFIER
-Token: SEMICOLON
-Token: IDENTIFIER
-Token: EQUALS
-Token: TRUE
-Token: SEMICOLON
-Token: IF
-Token: LPAREN
-Token: IDENTIFIER
-Token: EQUALS_EQUALS
-Token: TRUE
-Token: RPAREN
-Token: LBRACE
-Token: IDENTIFIER
-Token: EQUALS
-Token: IDENTIFIER
-Token: LPAREN
-Token: INTLIT
-Token: COMMA
-Token: INTLIT
-Token: RPAREN
-Token: SEMICOLON
-Token: RBRACE
-Token: IDENTIFIER
-Token: EQUALS
-Token: FALSE
-Token: SEMICOLON
-Token: IF
-Token: LPAREN
-Token: IDENTIFIER
-Token: EQUALS_EQUALS
-Token: TRUE
-Token: RPAREN
-Token: LBRACE
-Token: IDENTIFIER
-Token: EQUALS
-Token: IDENTIFIER
-Token: LPAREN
-Token: INTLIT
-Token: COMMA
-Token: INTLIT
-Token: RPAREN
-Token: SEMICOLON
-Token: RBRACE
-Token: RBRACE
-Token: RBRACE
+Token: IDENTIFIER, Value: class
+Token: IDENTIFIER, Value: Program
+Token: LBRACE, Value: {
+Token: BOOLEAN, Value: boolean
+Token: IDENTIFIER, Value: entrada
+Token: SEMICOLON, Value: ;
+Token: INT, Value: int
+Token: IDENTIFIER, Value: numeros
+Token: SEMICOLON, Value: ;
+Token: INT, Value: int
+Token: IDENTIFIER, Value: suma
+Token: LPAREN, Value: (
+Token: INT, Value: int
+Token: IDENTIFIER, Value: valor1
+Token: COMMA, Value: ,
+Token: INT, Value: int
+Token: IDENTIFIER, Value: valor2
+Token: RPAREN, Value: )
+Token: LBRACE, Value: {
+Token: INT, Value: int
+Token: IDENTIFIER, Value: res
+Token: SEMICOLON, Value: ;
+Token: IDENTIFIER, Value: res
+Token: EQUALS, Value: =
+Token: IDENTIFIER, Value: valor1
+Token: PLUS, Value: +
+Token: IDENTIFIER, Value: valor2
+Token: SEMICOLON, Value: ;
+Token: RETURN, Value: return
+Token: IDENTIFIER, Value: res
+Token: SEMICOLON, Value: ;
+Token: RBRACE, Value: }
+Token: VOID, Value: void
+Token: IDENTIFIER, Value: main
+Token: LPAREN, Value: (
+Token: RPAREN, Value: )
+Token: LBRACE, Value: {
+Token: INT, Value: int
+Token: IDENTIFIER, Value: resultado1
+Token: COMMA, Value: ,
+Token: IDENTIFIER, Value: resultado2
+Token: SEMICOLON, Value: ;
+Token: BOOLEAN, Value: boolean
+Token: IDENTIFIER, Value: resultado3
+Token: SEMICOLON, Value: ;
+Token: IDENTIFIER, Value: entrada
+Token: EQUALS, Value: =
+Token: TRUE, Value: true
+Token: SEMICOLON, Value: ;
+Token: IF, Value: if
+Token: LPAREN, Value: (
+Token: IDENTIFIER, Value: entrada
+Token: EQUALS_EQUALS, Value: ==
+Token: TRUE, Value: true
+Token: RPAREN, Value: )
+Token: LBRACE, Value: {
+Token: IDENTIFIER, Value: resultado1
+Token: EQUALS, Value: =
+Token: IDENTIFIER, Value: suma
+Token: LPAREN, Value: (
+Token: INTLIT, Value: 3
+Token: COMMA, Value: ,
+Token: INTLIT, Value: 2
+Token: RPAREN, Value: )
+Token: SEMICOLON, Value: ;
+Token: RBRACE, Value: }
+Token: IDENTIFIER, Value: entrada
+Token: EQUALS, Value: =
+Token: FALSE, Value: false
+Token: SEMICOLON, Value: ;
+Token: IF, Value: if
+Token: LPAREN, Value: (
+Token: IDENTIFIER, Value: entrada
+Token: EQUALS_EQUALS, Value: ==
+Token: TRUE, Value: true
+Token: RPAREN, Value: )
+Token: LBRACE, Value: {
+Token: IDENTIFIER, Value: resultado1
+Token: EQUALS, Value: =
+Token: IDENTIFIER, Value: resta
+Token: LPAREN, Value: (
+Token: INTLIT, Value: 3
+Token: COMMA, Value: ,
+Token: INTLIT, Value: 2
+Token: RPAREN, Value: )
+Token: SEMICOLON, Value: ;
+Token: RBRACE, Value: }
+Token: RBRACE, Value: }
+Token: RBRACE, Value: }
