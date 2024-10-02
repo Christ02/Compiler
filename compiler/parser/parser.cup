@@ -1,66 +1,81 @@
-// parser.cup
-package parser;
-
 import java_cup.runtime.Symbol;
-import parser.Program;
-import parser.StmtList;
-import parser.Stmt;
-import parser.Type;
-import parser.Expr;
 
-// Importar la clase de símbolos (tokens)
-import scanner.Scanner;
+parser code {:
+    // Código que será incluido en el parser generado
+    public class ParserActions {
+        public void syntax_error(Symbol s) {
+            System.err.println("Error de sintaxis en la línea " + s.left + ", columna " + s.right + ": " + s.value);
+        }
+    }
+:};
 
-// Definir terminales (tokens)
-terminal String IDENTIFIER, STRINGLIT;
-terminal int INTLIT;
-terminal float FLOATLIT;
-terminal IF, ELSE, WHILE, FOR, INT, FLOAT, BOOLEAN, TRUE, FALSE, PUBLIC, VOID, RETURN;
+action code {:
+    // Código que se ejecuta durante la acción de parsing
+:};
+
+terminal PLUS, MINUS, MULTIPLY, DIVIDE;
 terminal EQUALS, EQUALS_EQUALS, NOT_EQUALS, LESS_THAN, LESS_THAN_EQUALS, GREATER_THAN, GREATER_THAN_EQUALS;
-terminal LPAREN, RPAREN, LBRACE, RBRACE, SEMICOLON, COMMA, PLUS, MINUS, MULTIPLY, DIVIDE;
+terminal LPAREN, RPAREN, LBRACE, RBRACE, SEMICOLON, COMMA;
+terminal IF, ELSE, WHILE, FOR, INT, FLOAT, BOOLEAN, RETURN, TRUE, FALSE, PUBLIC, VOID;
+terminal IDENTIFIER, INTLIT, FLOATLIT, STRINGLIT;
 
-// Definir no terminales
-non terminal Program program;
-non terminal StmtList stmtList;
-non terminal Stmt stmt;
-non terminal Expr expr;
-non terminal Type type;
+non terminal Program;
+non terminal StatementList;
+non terminal Statement;
+non terminal Expression;
+non terminal Type;
+non terminal VariableDeclaration;
 
-// Definir precedencias para el IF/ELSE
-precedence left ELSE;
-precedence left EQUALS_EQUALS, NOT_EQUALS;
-precedence left LESS_THAN, GREATER_THAN, LESS_THAN_EQUALS, GREATER_THAN_EQUALS;
 precedence left PLUS, MINUS;
 precedence left MULTIPLY, DIVIDE;
+precedence left EQUALS_EQUALS, NOT_EQUALS, LESS_THAN, LESS_THAN_EQUALS, GREATER_THAN, GREATER_THAN_EQUALS;
+precedence nonassoc ELSE;  // Precedencia no asociativa para evitar el conflicto con else
 
-// Definir la producción principal
-program ::= stmtList:sl {: System.out.println("Programa válido"); RESULT = sl; :};
+start with Program;
 
-// Lista de sentencias
-stmtList ::= stmtList:sl stmt:s {: RESULT = sl; System.out.println("Sentencia agregada"); :}
-          | stmt:s               {: RESULT = s; :};
+Program ::= StatementList:statements
+          {: System.out.println("Parsed program"); :}
+          ;
 
-// Definir las producciones para las sentencias
-stmt ::= type:t IDENTIFIER:id EQUALS expr:e SEMICOLON {: System.out.println("Declaración de variable: " + id); :}
-       | IF LPAREN expr:e RPAREN stmt:s {: System.out.println("Condicional if"); :}
-       | IF LPAREN expr:e RPAREN stmt:s ELSE stmt:es {: System.out.println("Condicional if-else"); :}
-       | WHILE LPAREN expr:e RPAREN stmt:s {: System.out.println("Bucle while"); :}
-       | FOR LPAREN stmt:s expr:e SEMICOLON stmt:s RPAREN stmt:s {: System.out.println("Bucle for"); :}
-       | RETURN expr:e SEMICOLON {: System.out.println("Instrucción return"); :}
-       | LBRACE stmtList:sl RBRACE {: RESULT = sl; :};  // Bloque de código
+StatementList ::= Statement
+                | StatementList Statement
+                ;
 
-// Definir las producciones para expresiones
-expr ::= expr:e1 PLUS expr:e2 {: System.out.println("Suma"); :}
-       | expr:e1 MINUS expr:e2 {: System.out.println("Resta"); :}
-       | expr:e1 MULTIPLY expr:e2 {: System.out.println("Multiplicación"); :}
-       | expr:e1 DIVIDE expr:e2 {: System.out.println("División"); :}
-       | INTLIT:i {: System.out.println("Literal entero: " + i); :}
-       | FLOATLIT:f {: System.out.println("Literal flotante: " + f); :}
-       | IDENTIFIER:id {: System.out.println("Identificador: " + id); :}
-       | TRUE {: System.out.println("Literal booleano: true"); :}
-       | FALSE {: System.out.println("Literal booleano: false"); :};
+Statement ::= IF LPAREN Expression RPAREN Statement
+            | IF LPAREN Expression RPAREN Statement ELSE Statement
+            | WHILE LPAREN Expression RPAREN Statement
+            | FOR LPAREN Expression SEMICOLON Expression SEMICOLON Expression RPAREN Statement
+            | VariableDeclaration
+            | IDENTIFIER EQUALS Expression SEMICOLON
+            | RETURN Expression SEMICOLON
+            | LBRACE StatementList RBRACE
+            ;
 
-// Definir las producciones para los tipos de datos
-type ::= INT    {: RESULT = "int"; :}
-      | FLOAT  {: RESULT = "float"; :}
-      | BOOLEAN {: RESULT = "boolean"; :};
+VariableDeclaration ::= Type IDENTIFIER SEMICOLON
+                      | Type IDENTIFIER EQUALS Expression SEMICOLON
+                      ;
+
+Expression ::= Expression PLUS Expression
+             | Expression MINUS Expression
+             | Expression MULTIPLY Expression
+             | Expression DIVIDE Expression
+             | Expression EQUALS_EQUALS Expression
+             | Expression NOT_EQUALS Expression
+             | Expression LESS_THAN Expression
+             | Expression LESS_THAN_EQUALS Expression
+             | Expression GREATER_THAN Expression
+             | Expression GREATER_THAN_EQUALS Expression
+             | LPAREN Expression RPAREN
+             | IDENTIFIER
+             | INTLIT
+             | FLOATLIT
+             | STRINGLIT
+             | TRUE
+             | FALSE
+             ;
+
+Type ::= INT
+       | FLOAT
+       | BOOLEAN
+       | VOID
+       ;

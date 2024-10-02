@@ -16,7 +16,7 @@ public class ParserTest {
             Parser parser = new Parser(scanner);
 
             // Iniciar el proceso de parsing
-            Symbol result = parser.parser();
+            Symbol result = parser.parse();
 
             System.out.println("Parsing completed successfully.");
             
