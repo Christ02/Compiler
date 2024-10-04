@@ -1,40 +1,70 @@
+package parser;
+
 import java_cup.runtime.Symbol;
+import scanner.Scanner;  // Asegúrate de que la ruta sea correcta
+import java.io.FileReader;
+import java.io.IOException;
 
 parser code {:
-    // Código que será incluido en el parser generado
-    public class ParserActions {
-        public void syntax_error(Symbol s) {
-            System.err.println("Error de sintaxis en la línea " + s.left + ", columna " + s.right + ": " + s.value);
+    private Scanner scanner;
+
+    // Constructor para inicializar el scanner
+    public Parser(Scanner scanner) {
+        super();
+        this.scanner = scanner;
+    }
+
+    // Método para leer un archivo de entrada y ejecutar el parser
+    public Symbol parse(String filename) throws Exception {
+        try {
+            scanner = new Scanner(new FileReader(filename));
+            return this.parse();
+        } catch (IOException e) {
+            throw new RuntimeException("Error al leer el archivo: " + e.getMessage());
         }
+    }
+
+    // Método scan que conecta el scanner al parser
+    @Override
+    public Symbol scan() throws Exception {
+        return scanner.next_token();
+    }
+
+    // Método para manejar errores de sintaxis
+    public void syntax_error(Symbol s) {
+        String tokenName = sym.terminalNames[s.sym];
+        String tokenValue = s.value == null ? "" : s.value.toString();
+        String errorMessage = String.format(
+            "Error Sintáctico en la Línea %d, Columna %d: Token '%s' no reconocido. Tipo: %s",
+            s.right + 1, s.left + 1, tokenValue, tokenName
+        );
+
+        // Imprimir el error en la consola
+        System.err.println(errorMessage);
     }
 :};
 
-action code {:
-    // Código que se ejecuta durante la acción de parsing
-:};
-
+/* Terminals (tokens returned by the scanner) */
 terminal PLUS, MINUS, MULTIPLY, DIVIDE;
 terminal EQUALS, EQUALS_EQUALS, NOT_EQUALS, LESS_THAN, LESS_THAN_EQUALS, GREATER_THAN, GREATER_THAN_EQUALS;
 terminal LPAREN, RPAREN, LBRACE, RBRACE, SEMICOLON, COMMA;
 terminal IF, ELSE, WHILE, FOR, INT, FLOAT, BOOLEAN, RETURN, TRUE, FALSE, PUBLIC, VOID;
 terminal IDENTIFIER, INTLIT, FLOATLIT, STRINGLIT;
 
-non terminal Program;
-non terminal StatementList;
-non terminal Statement;
-non terminal Expression;
-non terminal Type;
-non terminal VariableDeclaration;
+/* Non-terminals */
+non terminal Object Program, StatementList, Statement, Expression, Type, VariableDeclaration;
 
+/* Precedences */
 precedence left PLUS, MINUS;
 precedence left MULTIPLY, DIVIDE;
 precedence left EQUALS_EQUALS, NOT_EQUALS, LESS_THAN, LESS_THAN_EQUALS, GREATER_THAN, GREATER_THAN_EQUALS;
-precedence nonassoc ELSE;  // Precedencia no asociativa para evitar el conflicto con else
+precedence nonassoc ELSE;  // Evitar conflicto con "else"
 
+/* The grammar rules */
 start with Program;
 
 Program ::= StatementList:statements
-          {: System.out.println("Parsed program"); :}
+          {: RESULT = statements; System.out.println("Parsed program"); :}
           ;
 
 StatementList ::= Statement

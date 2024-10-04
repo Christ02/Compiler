@@ -8,12 +8,10 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Sep 29 18:06:13 2024
+# Make data base, printed on Thu Oct 03 16:42:45 2024
 
 # Variables
 
-# environment
-FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # environment
@@ -39,9 +37,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_12152_MKLJCUJLEZWFXJLY
-# environment
-FPS_BROWSER_USER_PROFILE_STRING = Default
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_32328_NLSWTBATMFEDHGYY
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -55,7 +51,7 @@ IGCCSVC_DB = AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsSk/5Wrr/EG/5eVvacLc1AQAAAACAAAAAAA
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\Mayco\AppData\Roaming\Code\CachedData\38c31bc77e0dd6ae88a4e9cc93428cc27a56ba40
+VSCODE_CODE_CACHE_PATH = C:\Users\Mayco\AppData\Roaming\Code\CachedData\d78a74bcdfad14d5d3b1b782f87255d802b57511
 # environment
 LANG = C
 # default
@@ -91,7 +87,7 @@ MAKEFILE_LIST :=
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 12152
+VSCODE_PID = 32328
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -121,7 +117,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python312\Scripts\;C:\Python312\;C:\Program Files\Python311\Scripts\;C:\Program Files\Python311\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Python\Scripts;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Docker\Docker\resources\bin;C:\jflex-1.9.1\bin;C:\jflex-1.9.1\lib\jflex-full-1.9.1.jar;C:\Users\Mayco\.console-ninja\.bin;C:\Users\Mayco\AppData\Local\Programs\Python\Launcher\;C:\Users\Mayco\AppData\Local\Microsoft\WindowsApps;C:\Users\Mayco\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Mayco\AppData\Local\GitHubDesktop\bin;C:\Python\Scripts;C:\Users\Mayco\AppData\Roaming\npm;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;
+PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python312\Scripts\;C:\Python312\;C:\Program Files\Python311\Scripts\;C:\Program Files\Python311\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Python\Scripts;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Docker\Docker\resources\bin;C:\jflex-1.9.1\bin;C:\jflex-1.9.1\lib\jflex-full-1.9.1.jar;C:\Users\Mayco\.console-ninja\.bin;C:\Users\Mayco\AppData\Local\Programs\Python\Launcher\;C:\Users\Mayco\AppData\Local\Microsoft\WindowsApps;C:\Users\Mayco\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Mayco\AppData\Local\GitHubDesktop\bin;C:\Python\Scripts;C:\Users\Mayco\AppData\Roaming\npm;C:\Users\Mayco\AppData\Local\Microsoft\WindowsApps;C:\cup\bin;
 # environment
 ZES_ENABLE_SYSMAN = 1
 # environment
@@ -149,6 +145,8 @@ PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW
 # automatic
 +F = $(notdir $+)
 # environment
+CUP_HOME = C:\cup
+# environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
 USERDOMAIN = DESKTOP-UJBP1L4
@@ -158,6 +156,8 @@ GNUMAKEFLAGS :=
 OS = Windows_NT
 # environment
 EFC_9976 = 1
+# environment
+__COMPAT_LAYER = DetectorsAppHealth
 # makefile
 .DEFAULT_GOAL := 
 # default
@@ -185,7 +185,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\Mayco\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\cc5e89d2-1.93.1-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\cc5e89d2-1.94.0-main-sock
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -193,8 +193,7 @@ VSCODE_IPC_HOOK = \\.\pipe\cc5e89d2-1.93.1-main-sock
 # default
 SUFFIXES := 
 # environment
-ALL 
-USERSPROFILE = C:\ProgramData
+ALLUSERSPROFILE = C:\ProgramData
 # environment
 SESSIONNAME = Console
 # default
@@ -204,7 +203,7 @@ PROCESSOR_REVISION = 8c02
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 140 Stepping 2, GenuineIntel
 # variable set hash-table stats:
-# Load=95/1024=9%, Rehash=0, Collisions=9/120=8%
+# Load=95/1024=9%, Rehash=0, Collisions=8/120=7%
 
 # Pattern-specific Variable Values
 
@@ -277,6 +276,6 @@ GNUmakefile:
 # strcache performance: lookups = 15 / hit rate = 20%
 # hash-table stats:
 # Load=12/8192=0%, Rehash=0, Collisions=0/15=0%
-# Finished Make data base on Sun Sep 29 18:06:13 2024
+# Finished Make data base on Thu Oct 03 16:42:45 2024
 
  
